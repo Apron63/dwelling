@@ -7,9 +7,10 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-backend',
+    'id' => 'dwelling-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
+    'language' => 'ru',
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
@@ -23,7 +24,7 @@ return [
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'dwelling-backend',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -37,14 +38,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' => 'site/index',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

@@ -19,7 +19,7 @@ class News extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'news';
+        return 'dwe_news';
     }
 
     /**
@@ -29,7 +29,9 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'short', 'full'], 'required'],
-            [['created_at'], 'integer'],
+            ['created_at', 'filter', 'filter' => function ($value) {
+                return strtotime($value);
+            }],
             [['full'], 'string'],
             [['short'], 'string', 'max' => 255],
         ];
@@ -42,9 +44,9 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'created_at' => 'Created At',
-            'short' => 'Short',
-            'full' => 'Full',
+            'created_at' => 'Дата',
+            'short' => 'Заголовок',
+            'full' => 'Полный текст',
         ];
     }
 }

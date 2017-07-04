@@ -1,9 +1,9 @@
 <?php
+use yii\helpers\HtmlPurifier;
 use yii\helpers\Html;
-    use yii\helpers\HtmlPurifier;
 ?>
-     
 <div class="news-item">
     <h4><?= Html::encode(date('d.m.Y', $model->created_at)) ?></h4>
-    <?= Html::a($model->short, 'news/' . $model->id)?>
+    <?= HtmlPurifier::process($model->short) ?>
 </div>
+

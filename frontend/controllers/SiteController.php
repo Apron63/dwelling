@@ -13,6 +13,8 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 
+use yii\data\ActiveDataProvider;
+
 /**
  * Site controller
  */
@@ -72,8 +74,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = \common\models\News::find()->orderBy(['created-at' => SORT_DESC])->limit(3);
-	return $this->render('index', ['dataProvider' => $dataProvider]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => \common\models\News::find()
+                ->orderBy(['created_at' => SORT_DESC]),
+            'pagination' => [
+                'pageSize' =>3,
+            ],
+        ]);
+	    return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     /**
